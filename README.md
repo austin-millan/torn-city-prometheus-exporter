@@ -1,4 +1,4 @@
-# torn-exporter
+# torn-city-prometheus-exporter
 
 Prometheus exporter for a Torn account, built on [go-torn-client](https://gitlab.com/torn-city/go-torn-client).
 
