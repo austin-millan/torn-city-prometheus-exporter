@@ -1,0 +1,33 @@
+version: "3"
+
+dotenv: [".env"]
+
+vars:
+  CMD_PKG: ./cmd/torn-exporter
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  test:
+    desc: Run Go tests
+    cmds:
+      - go test ./...
+
+  run:
+    desc: Run the Prometheus exporter (reads TORN_API_KEY from .env)
+    cmds:
+      - go run {{.CMD_PKG}}
+
+  build:
+    desc: Build the exporter binary into bin/
+    cmds:
+      - mkdir -p bin
+      - go build -o bin/torn-exporter {{.CMD_PKG}}
+
+  tidy:
+    desc: Tidy Go module dependencies
+    cmds:
+      - go mod tidy
